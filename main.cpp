@@ -2,6 +2,10 @@
 #include <string>
 #include <stdbool.h>
 #include <vector>
+#include <ostream>
+#include <algorithm>
+#include <iterator>
+#include <time.h>
 #include <random>
 
 using namespace std;
@@ -162,22 +166,51 @@ public:
 };
 
 class Confronto{
-    public:
-    string batalha(Soldado &s1, Soldado &s2){
-        int i = random(0,1);
-        while(!s1.morreu() && !s2.morreu()){
-            if(i % 2 == 0){s1.atacar(s2);}
-            else{s2.atacar(s1);}
-            i++;
-        }
+public:
+    vector <Soldado> bem; 
+    vector <Soldado> mal; 
+    
+    void guerra(){
 
-        if(s1.morreu()){
-            return s2.getNome();
-        }
+        vector <Soldado>::iterator bem_it;
+        vector <Soldado>::iterator mal_it;
 
-        return s1.getNome();
+        while (!bem.empty() && !mal.empty())
+        {   
+            random_shuffle(bem.begin(), bem.end());
+            random_shuffle(mal.begin(), mal.end());
+            bem_it = bem.begin();
+            mal_it = mal.begin();
+
+            while(mal_it != mal.end() && bem_it != bem.end()){
+                int i = random(0,1);
+                while(!(*mal_it).morreu() && !(*bem_it).morreu()){
+                    if(i % 2 == 0){(*mal_it).atacar(*bem_it);}
+                    else{(*bem_it).atacar(*mal_it);}
+                    i++;
+                }
+
+                if((*mal_it).morreu())
+                    mal_it = mal.erase(mal_it);
+                    bem_it++;
+
+                if((*bem_it).morreu())
+                    bem_it = bem.erase(bem_it);
+                    mal_it++;
+            }
+        }
+        
+        if(bem.empty()){
+            cout << "o mal venceu";
+            return;
+        }
+        else if(mal.empty()){
+            cout << "o bem venceu";
+            return;
+        }
     }
 };
+
 
 int main()
 {   
