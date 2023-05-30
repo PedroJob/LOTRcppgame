@@ -41,13 +41,15 @@ public:
 
     virtual void atacar(Soldado &s)
     {   
-        int RANGE = random(0, (int)poder);
-        s.defender(random(poder - RANGE, poder + RANGE));
+        int RANGE = random(0, 10);
+        int dano = random((int)poder - RANGE, (int)poder + RANGE);
+        s.defender(dano);
     }
 
     virtual void defender(float p)
     {
         saude -= p;
+        cout << nome << " perde " << p << " pontos de vida, restam: " << saude << endl;
     }
 
     bool morreu(){
@@ -155,25 +157,26 @@ public:
     {
         if (chance(10))
         {
-            cout << "blocked" << endl;
+            cout << "o mago bloqueou o ataque, ";
+            Soldado::defender(0);
             return;
         }
         else
         {
-            saude -= p;
+            Soldado::defender(p);
         }
     }
 };
 
 class Confronto{
 public:
-    vector <Soldado> bem; 
-    vector <Soldado> mal; 
+    vector <Soldado*> bem; 
+    vector <Soldado*> mal; 
     
     void guerra(){
 
-        vector <Soldado>::iterator bem_it;
-        vector <Soldado>::iterator mal_it;
+        vector <Soldado*>::iterator bem_it;
+        vector <Soldado*>::iterator mal_it;
 
         while (!bem.empty() && !mal.empty())
         {   
@@ -184,19 +187,30 @@ public:
 
             while(mal_it != mal.end() && bem_it != bem.end()){
                 int i = random(0,1);
-                while(!(*mal_it).morreu() && !(*bem_it).morreu()){
-                    if(i % 2 == 0){(*mal_it).atacar(*bem_it);}
-                    else{(*bem_it).atacar(*mal_it);}
+                cout << (**mal_it).getNome() << " versus " << (**bem_it).getNome() << endl;
+                while(!(**mal_it).morreu() && !(**bem_it).morreu()){
+                    if(i % 2 == 0){
+                        cout << (**mal_it).getNome() << " ataca: ";
+                        (**mal_it).atacar(**bem_it);
+                    }
+                    else{
+                        cout << (**bem_it).getNome() << " ataca: ";
+                        (**bem_it).atacar(**mal_it);
+                    }
                     i++;
                 }
 
-                if((*mal_it).morreu())
+                if((**mal_it).morreu()){
+                    cout << (**mal_it).getNome() << " morreu" << endl;
                     mal_it = mal.erase(mal_it);
                     bem_it++;
-
-                if((*bem_it).morreu())
+                }
+                else if((**bem_it).morreu()){
+                    cout << (**bem_it).getNome() << " morreu" << endl;
                     bem_it = bem.erase(bem_it);
                     mal_it++;
+                }
+
             }
         }
         
@@ -214,5 +228,13 @@ public:
 
 int main()
 {   
-    cout << random(0,1) << endl;
+    Mago job("job", 100, 50);
+    Sauron thais("tata", 100, 20);
+
+    Confronto c;
+
+    c.bem.push_back(&job);
+    c.mal.push_back(&thais);
+
+    c.guerra();
 }
