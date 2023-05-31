@@ -7,6 +7,7 @@
 #include <iterator>
 #include <time.h>
 #include <random>
+#include <windows.h>
 
 using namespace std;
 
@@ -62,7 +63,14 @@ public:
     }
 
     string getNome(){return nome;}
+    float getSaude(){return saude;}
+    float getPoder(){return poder;}
 };
+
+ostream& operator<<(ostream &os, Soldado &s){
+    os << s.getNome() << " (HP: " << s.getSaude() << ")";
+    return os; 
+}
 
 class Elfo : public Soldado
 {
@@ -84,7 +92,7 @@ public:
         }
         else
         {
-            s.defender(poder);
+            Soldado::atacar(s);
         }
     }
 };
@@ -98,12 +106,13 @@ public:
     {
         if (chance(10))
         {
-            s.defender(poder);
-            s.defender(poder);
+            cout << "Ataque duplo!" << endl;
+            Soldado::atacar(s);
+            Soldado::atacar(s);
         }
         else
         {
-            s.defender(poder);
+            Soldado::atacar(s);
         }
         return;
     }
@@ -115,15 +124,20 @@ public:
     Sauron(string nome, float s, float p) : Soldado(nome, 10 * s, p) {}
 
     void atacar(Soldado &s)
-    {
+    {   
+        float aux = poder; 
         if (chance(30))
-        {
-            s.defender(2 * poder);
+        {   
+            cout << "Dobro de ataque!" << endl;
+            poder *= 2;
+            Soldado::atacar(s);
         }
         else
         {
-            s.defender(poder);
+            Soldado::atacar(s);
         }
+
+        poder = aux;
         return;
     }
 };
@@ -135,15 +149,20 @@ public:
 
     void atacar(Soldado &s)
     {
+        float aux = poder;
         if (chance(20))
         {
-            s.defender(1.1 * poder);
-            s.defender(1.1 * poder);
+            cout << "Ataque duplo!" << endl;
+            poder *= 1.1; 
+            Soldado::atacar(s);
+            Soldado::atacar(s);
         }
         else
         {
-            s.defender(poder);
+            Soldado::atacar(s);
         }
+
+        poder = aux;
         return;
     }
 };
@@ -187,25 +206,29 @@ public:
 
             while(mal_it != mal.end() && bem_it != bem.end()){
                 int i = random(0,1);
-                cout << (**mal_it).getNome() << " versus " << (**bem_it).getNome() << endl;
+                cout << "#########################################################" << endl;
+                cout << (**mal_it) << " versus " << (**bem_it) << endl;
                 while(!(**mal_it).morreu() && !(**bem_it).morreu()){
                     if(i % 2 == 0){
-                        cout << (**mal_it).getNome() << " ataca: ";
+                        cout << "-> " << (**mal_it).getNome() << " ataca: " << endl;
                         (**mal_it).atacar(**bem_it);
                     }
                     else{
-                        cout << (**bem_it).getNome() << " ataca: ";
+                        cout <<"-> "<< (**bem_it).getNome() << " ataca: " << endl;
                         (**bem_it).atacar(**mal_it);
                     }
                     i++;
+                    Sleep(2000);
                 }
 
                 if((**mal_it).morreu()){
+                    cout << (**bem_it).getNome() << " vence" << endl;
                     cout << (**mal_it).getNome() << " morreu" << endl;
                     mal_it = mal.erase(mal_it);
                     bem_it++;
                 }
                 else if((**bem_it).morreu()){
+                    cout << (**mal_it).getNome() << " vence" << endl;
                     cout << (**bem_it).getNome() << " morreu" << endl;
                     bem_it = bem.erase(bem_it);
                     mal_it++;
@@ -230,11 +253,15 @@ int main()
 {   
     Mago job("job", 100, 50);
     Sauron thais("tata", 100, 20);
+    Orc velosum("velosum", 100, 30);
+    Humano bilau("bilau", 100, 40);
 
     Confronto c;
 
     c.bem.push_back(&job);
+    c.bem.push_back(&bilau);
     c.mal.push_back(&thais);
+    c.mal.push_back(&velosum);
 
     c.guerra();
 }
