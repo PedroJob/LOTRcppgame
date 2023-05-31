@@ -199,6 +199,7 @@ public:
 
         while (!bem.empty() && !mal.empty())
         {   
+            srand(time(NULL));
             random_shuffle(bem.begin(), bem.end());
             random_shuffle(mal.begin(), mal.end());
             bem_it = bem.begin();
@@ -255,11 +256,15 @@ int main()
     Sauron thais("tata", 100, 20);
     Orc velosum("velosum", 100, 30);
     Humano bilau("bilau", 100, 40);
+    Orc super("super", 100, 35);
+    Elfo elf("elf", 100, 50);
 
     Confronto c;
 
     c.bem.push_back(&job);
     c.bem.push_back(&bilau);
+    c.bem.push_back(&elf);
+    c.mal.push_back(&super);
     c.mal.push_back(&thais);
     c.mal.push_back(&velosum);
 
