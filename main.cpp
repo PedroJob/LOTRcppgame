@@ -91,10 +91,15 @@ public:
     Anao(string nome, float s, float p) : Soldado(nome, s, p + 20) {}
 
     void atacar(Soldado &s)
-    {
+    {   
+        float aux = poder;
+
         if (chance(40))
         {
-            cout << "missed" << endl;
+            cout << "O anao errou o ataque :(" << endl;
+            poder = 0;
+            Soldado::atacar(s);
+            poder = aux;
             return;
         }
         else
@@ -189,7 +194,7 @@ public:
     {
         if (chance(10)) //toda vez que o mago bloqueia um ataque, aumenta sua chance de contra-ataque
         {
-            cout << "o mago bloqueou o ataque, ";
+            cout << "O mago bloqueou o ataque, ";
             Soldado::defender(0);
             chance_contra_ataque += 15;
             return;
@@ -201,19 +206,74 @@ public:
     }
 };
 
+class Ladrao: public Soldado{
+public:
+    Ladrao(string nome, float s, float p) : Soldado(nome, s, p, 20) {}
+
+    void defender(float p) //20% de chance de desviar do ataque e de dar ataque duplo
+    {
+        if(chance(20)){
+            cout << "O ladrao desviou do golpe, ";
+            Soldado::defender(0);
+            return;
+        }
+        else{
+            Soldado::defender(p);
+        }
+    }
+
+    void atacar(Soldado &s)
+    {
+        float aux = poder;
+        if (chance(20))
+        {
+            cout << "Ataque duplo!" << endl; 
+            Soldado::atacar(s);
+            Soldado::atacar(s);
+        }
+        else
+        {
+            Soldado::atacar(s);
+        }
+
+        poder = aux;
+        return;
+    }
+};
+
 class Confronto{
 public:
     vector <Soldado*> bem; 
     vector <Soldado*> mal; 
 
+    void print(vector <Soldado *> army){
+        vector <Soldado*>::iterator army_it ;
+
+        for(army_it = army.begin(); army_it != army.end(); army_it++){
+            cout << (**army_it) << " | ";
+        }
+        cout << endl;
+        return;
+    }
+
+    void intro(){
+        cout << "Exercito do bem: ";
+        print(bem);
+        cout << "Exercito do mal: ";
+        print(mal);
+        cout << "QUE COMECEM OS JOGOS!" << endl;
+    }
+
     void guerra(){
+        intro();
         //início randomico da batalha:
         srand(time(NULL));
         random_shuffle(mal.begin(), mal.end());
         random_shuffle(bem.begin(), bem.end());
 
         vector <Soldado*>::iterator bem_it = bem.begin();
-        vector <Soldado*>::iterator mal_it = mal.begin();
+        vector <Soldado*>::iterator mal_it = mal.begin();  
+
 
 
         while (!bem.empty() && !mal.empty())
@@ -249,13 +309,13 @@ public:
                 }
 
                 if((**mal_it).morreu()){
-                    cout << (**bem_it).getNome() << " vence" << endl;
+                    cout << (**bem_it).getNome() << " vence, ";
                     cout << (**mal_it).getNome() << " morreu" << endl;
                     mal_it = mal.erase(mal_it);
                     bem_it++;
                 }
                 else if((**bem_it).morreu()){
-                    cout << (**mal_it).getNome() << " vence" << endl;
+                    cout << (**mal_it).getNome() << " vence, ";
                     cout << (**bem_it).getNome() << " morreu" << endl;
                     bem_it = bem.erase(bem_it);
                     mal_it++;
@@ -278,24 +338,22 @@ public:
 
 int main()
 {   
-    Mago job("job", 100, 200);
-    Sauron thais("tata", 100, 20);
+    Mago job("job", 100, 30);
+    Humano bilau("bilau", 100, 30);
+    Gollum gollum("gollum", 100, 20);
+    Anao anao("anao", 100, 20);
+    Sauron thais("tata", 20, 30);
     Orc velosum("velosum", 100, 30);
-    Humano bilau("bilau", 100, 200);
-    Orc super0("super0", 200, 1000);
-    Orc super1("super1", 50, 10);
-    Orc super2("super2", 50, 10);
-    Orc super3("super3", 50, 10);
-    Orc super4("super4", 50, 10);
-    Orc super5("super5", 50, 10);
-    Gollum gollum("gollum", 100, 200);
+    Ladrao ladrao("ladrao", 100, 20);
+    
 
     Confronto c;
 
     c.bem.push_back(&job);
     c.bem.push_back(&bilau);
     c.bem.push_back(&gollum);
-    c.mal.push_back(&super0);
+    c.bem.push_back(&anao);
+    c.mal.push_back(&ladrao);
     c.mal.push_back(&thais);
     c.mal.push_back(&velosum);
 
