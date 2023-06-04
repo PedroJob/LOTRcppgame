@@ -8,9 +8,10 @@
 #include <time.h>
 #include <random>
 #include <windows.h>
+#include <fstream>
 
 using namespace std;
-
+ 
 int random(int min, int max){
     random_device dev;
     mt19937 rng(dev());
@@ -36,12 +37,18 @@ class Soldado
 protected:
     string nome;
     float saude, poder;
+    int chance_contra_ataque;
 
 public:
-    Soldado(string nome, float s, float p) : nome(nome), saude(s), poder(p){}
+    Soldado(string nome, float s, float p, int chance = 0) : nome(nome), saude(s), poder(p), chance_contra_ataque(chance){}
 
     virtual void atacar(Soldado &s)
     {   
+        if(chance(s.chance_contra_ataque)){
+            cout << "Contra-ataque!" << endl;
+            this->defender(s.getPoder());
+            return;
+        }
         int RANGE = random(0, 10);
         int dano = random((int)poder - RANGE, (int)poder + RANGE);
         s.defender(dano);
@@ -118,6 +125,12 @@ public:
     }
 };
 
+class Gollum : public Soldado{
+public:
+    //Gollum tem 20% de chance de contra-atacar "MY PRECIOUSSS"
+    Gollum(string nome, float s, float p) : Soldado(nome, s, p, 20){}
+};
+
 class Sauron : public Soldado
 {
 public:
@@ -167,17 +180,18 @@ public:
     }
 };
 
-class Mago : public Soldado
+class Mago : public Soldado //o mago tem um poderoso escudo áureo
 {
 public:
     Mago(string nome, float s, float p) : Soldado(nome, s, p + 30) {}
 
-    void defender(float p) // 10% de chance de bloquear um ataque com um escudo mágico
+    void defender(float p) // 10% de chance de bloquear um ataque com seu escudo mágico
     {
-        if (chance(10))
+        if (chance(10)) //toda vez que o mago bloqueia um ataque, aumenta sua chance de contra-ataque
         {
             cout << "o mago bloqueou o ataque, ";
             Soldado::defender(0);
+            chance_contra_ataque += 15;
             return;
         }
         else
@@ -191,24 +205,36 @@ class Confronto{
 public:
     vector <Soldado*> bem; 
     vector <Soldado*> mal; 
-    
-    void guerra(){
 
-        vector <Soldado*>::iterator bem_it;
-        vector <Soldado*>::iterator mal_it;
+    void guerra(){
+        //início randomico da batalha:
+        srand(time(NULL));
+        random_shuffle(mal.begin(), mal.end());
+        random_shuffle(bem.begin(), bem.end());
+
+        vector <Soldado*>::iterator bem_it = bem.begin();
+        vector <Soldado*>::iterator mal_it = mal.begin();
+
 
         while (!bem.empty() && !mal.empty())
         {   
-            srand(time(NULL));
-            random_shuffle(bem.begin(), bem.end());
-            random_shuffle(mal.begin(), mal.end());
-            bem_it = bem.begin();
-            mal_it = mal.begin();
+            srand(time(NULL)); //sempre gerando uma nova seed para deixar o mais aleatório possível
+
+            if(mal_it == mal.end()){ //se chegou ao final, reseta e da shuffle, caso contrário, continua de onde parou (prioridade)
+                random_shuffle(mal.begin(), mal.end());
+                mal_it = mal.begin();
+            }
+
+            if(bem_it == bem.end()){
+                random_shuffle(bem.begin(), bem.end());
+                bem_it = bem.begin();
+            }
 
             while(mal_it != mal.end() && bem_it != bem.end()){
                 int i = random(0,1);
                 cout << "#########################################################" << endl;
                 cout << (**mal_it) << " versus " << (**bem_it) << endl;
+
                 while(!(**mal_it).morreu() && !(**bem_it).morreu()){
                     if(i % 2 == 0){
                         cout << "-> " << (**mal_it).getNome() << " ataca: " << endl;
@@ -252,19 +278,24 @@ public:
 
 int main()
 {   
-    Mago job("job", 100, 50);
+    Mago job("job", 100, 200);
     Sauron thais("tata", 100, 20);
     Orc velosum("velosum", 100, 30);
-    Humano bilau("bilau", 100, 40);
-    Orc super("super", 100, 35);
-    Elfo elf("elf", 100, 50);
+    Humano bilau("bilau", 100, 200);
+    Orc super0("super0", 200, 1000);
+    Orc super1("super1", 50, 10);
+    Orc super2("super2", 50, 10);
+    Orc super3("super3", 50, 10);
+    Orc super4("super4", 50, 10);
+    Orc super5("super5", 50, 10);
+    Gollum gollum("gollum", 100, 200);
 
     Confronto c;
 
     c.bem.push_back(&job);
     c.bem.push_back(&bilau);
-    c.bem.push_back(&elf);
-    c.mal.push_back(&super);
+    c.bem.push_back(&gollum);
+    c.mal.push_back(&super0);
     c.mal.push_back(&thais);
     c.mal.push_back(&velosum);
 
