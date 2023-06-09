@@ -259,9 +259,15 @@ public:
     void intro(){
         cout << "Exercito do bem: ";
         print(bem);
+        cout << endl;
+        Sleep(2000);
         cout << "Exercito do mal: ";
         print(mal);
+        cout << endl;
+        Sleep(2000);
         cout << "QUE COMECEM OS JOGOS!" << endl;
+        Sleep(2000);
+        system("cls");
     }
 
     void guerra(){
