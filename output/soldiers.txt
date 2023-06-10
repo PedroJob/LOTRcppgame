@@ -1,0 +1,7 @@
+Mago job 100 30
+Humano bilau 100 30
+Gollum gollum 100 20
+Anao anao 100 20
+Sauron tata 20 30 
+Orc velosum 100 30
+Ladrao ladrao 100 20

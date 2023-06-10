@@ -57,6 +57,10 @@ public:
     virtual void defender(float p)
     {
         saude -= p;
+        if(saude < 0){
+            cout << "FATALITY!" << endl; 
+            return;
+        }
         cout << nome << " perde " << p << " pontos de vida, restam: " << saude << endl;
     }
 
@@ -208,7 +212,7 @@ public:
 
 class Ladrao: public Soldado{
 public:
-    Ladrao(string nome, float s, float p) : Soldado(nome, s, p, 20) {}
+    Ladrao(string nome, float s, float p) : Soldado(nome, s, p) {}
 
     void defender(float p) //20% de chance de desviar do ataque e de dar ataque duplo
     {
@@ -244,29 +248,43 @@ public:
 class Confronto{
 public:
     vector <Soldado*> bem; 
-    vector <Soldado*> mal; 
+    vector <Soldado*> mal;
+    const int delay;
+    ofstream battle_log;
+
+    Confronto(int delay):delay(delay){
+        battle_log.open("battle_log.txt");
+        if(!battle_log.is_open()){
+            cout << "erro ao abrir arquivo" << endl;
+        }
+    }
+
+    ~Confronto(){battle_log.close();}
 
     void print(vector <Soldado *> army){
         vector <Soldado*>::iterator army_it ;
 
         for(army_it = army.begin(); army_it != army.end(); army_it++){
-            cout << (**army_it) << " | ";
+            cout << (**army_it) << endl;
+            battle_log << (**army_it) << endl;
         }
-        cout << endl;
+        battle_log << endl;
         return;
     }
 
     void intro(){
-        cout << "Exercito do bem: ";
+        cout << "Exercito do bem: " << endl;
+        battle_log << "Exercito do bem: " << endl;
         print(bem);
-        cout << endl;
-        Sleep(2000);
-        cout << "Exercito do mal: ";
+        Sleep(delay);
+        system("cls");
+        cout << "Exercito do mal: " << endl;
+        battle_log << "Exercito do mal: " << endl;
         print(mal);
-        cout << endl;
-        Sleep(2000);
+        Sleep(delay);
+        system("cls");
         cout << "QUE COMECEM OS JOGOS!" << endl;
-        Sleep(2000);
+        Sleep(delay);
         system("cls");
     }
 
@@ -279,8 +297,6 @@ public:
 
         vector <Soldado*>::iterator bem_it = bem.begin();
         vector <Soldado*>::iterator mal_it = mal.begin();  
-
-
 
         while (!bem.empty() && !mal.empty())
         {   
@@ -298,52 +314,99 @@ public:
 
             while(mal_it != mal.end() && bem_it != bem.end()){
                 int i = random(0,1);
-                cout << "#########################################################" << endl;
-                cout << (**mal_it) << " versus " << (**bem_it) << endl;
+                cout << (**mal_it) << " versus " << (**bem_it) << endl << endl;
+                battle_log << (**mal_it) << " versus " << (**bem_it) << endl;
 
                 while(!(**mal_it).morreu() && !(**bem_it).morreu()){
                     if(i % 2 == 0){
-                        cout << "-> " << (**mal_it).getNome() << " ataca: " << endl;
-                        (**mal_it).atacar(**bem_it);
+                        cout << "-> " << (**mal_it) << " ataca: " << endl;
+                        (**mal_it).atacar(**bem_it); 
                     }
                     else{
-                        cout <<"-> "<< (**bem_it).getNome() << " ataca: " << endl;
+                        cout <<"-> "<< (**bem_it) << " ataca: " << endl;
                         (**bem_it).atacar(**mal_it);
                     }
                     i++;
-                    Sleep(2000);
+                    cout << endl;
+                    Sleep(delay);
                 }
 
                 if((**mal_it).morreu()){
                     cout << (**bem_it).getNome() << " vence, ";
                     cout << (**mal_it).getNome() << " morreu" << endl;
+                    battle_log << (**bem_it).getNome() << " vence, ";
+                    battle_log << (**mal_it).getNome() << " morreu" << endl << endl;
                     mal_it = mal.erase(mal_it);
                     bem_it++;
                 }
                 else if((**bem_it).morreu()){
                     cout << (**mal_it).getNome() << " vence, ";
                     cout << (**bem_it).getNome() << " morreu" << endl;
+                    battle_log << (**mal_it).getNome() << " vence, ";
+                    battle_log << (**bem_it).getNome() << " morreu" << endl << endl;
                     bem_it = bem.erase(bem_it);
                     mal_it++;
-                }
-
+                } 
+                Sleep(delay);
+                system("cls");
             }
         }
         
         if(bem.empty()){
-            cout << "o mal venceu";
+            cout << "O EXERCITO DO MAL VENCEU";
+            battle_log << "O EXERCITO DO MAL VENCEU";
             return;
         }
         else if(mal.empty()){
-            cout << "o bem venceu";
+            cout << "O EXERCITO DO BEM VENCEU";
+            battle_log << "O EXERCITO DO BEM VENCEU";
             return;
         }
+    }
+
+    void read_army_file(){
+        ifstream army;
+        army.open("soldiers.txt", ios::in);
+        if(!army.is_open()){
+            cout << "erro ao abrir arquivo" << endl;
+            return;
+        }
+        string classe, nome;
+        float poder, vida;
+        do{ 
+            army >> classe >> nome >> poder >> vida;
+
+            if(classe == "Mago"){
+                bem.push_back(new Mago(nome, poder, vida));
+            }
+            if(classe == "Humano"){
+                bem.push_back(new Humano(nome, poder, vida));
+            }
+            if(classe == "Gollum"){
+                bem.push_back(new Gollum(nome, poder, vida));
+            }
+            if(classe == "Anao"){
+                bem.push_back(new Anao(nome, poder, vida));
+            }
+            if(classe == "Sauron"){
+                mal.push_back(new Sauron(nome, poder, vida));
+            }
+            if(classe == "Orc"){
+                mal.push_back(new Orc(nome, poder, vida));
+            }
+            if(classe == "Ladrao"){
+                mal.push_back(new Ladrao(nome, poder, vida));
+            }
+
+        }while(!army.eof());
+        
     }
 };
 
 
 int main()
 {   
+    /*
     Mago job("job", 100, 30);
     Humano bilau("bilau", 100, 30);
     Gollum gollum("gollum", 100, 20);
@@ -351,10 +414,11 @@ int main()
     Sauron thais("tata", 20, 30);
     Orc velosum("velosum", 100, 30);
     Ladrao ladrao("ladrao", 100, 20);
-    
+    */
 
-    Confronto c;
+    Confronto c(0);
 
+    /*
     c.bem.push_back(&job);
     c.bem.push_back(&bilau);
     c.bem.push_back(&gollum);
@@ -362,6 +426,8 @@ int main()
     c.mal.push_back(&ladrao);
     c.mal.push_back(&thais);
     c.mal.push_back(&velosum);
+    */
 
+    c.read_army_file();
     c.guerra();
 }

@@ -1,0 +1,30 @@
+Exercito do bem: 
+job (HP: 100)
+bilau (HP: 100)
+gollum (HP: 100)
+anao (HP: 100)
+
+Exercito do mal: 
+tata (HP: 200)
+velosum (HP: 100)
+ladrao (HP: 100)
+
+ladrao (HP: 100) versus anao (HP: 100)
+anao vence, ladrao morreu
+
+velosum (HP: 100) versus job (HP: 100)
+job vence, velosum morreu
+
+tata (HP: 200) versus bilau (HP: 100)
+tata vence, bilau morreu
+
+tata (HP: 106) versus gollum (HP: 100)
+tata vence, gollum morreu
+
+tata (HP: 59) versus anao (HP: 4)
+tata vence, anao morreu
+
+tata (HP: 59) versus job (HP: 71)
+tata vence, job morreu
+
+O EXERCITO DO MAL VENCEU
