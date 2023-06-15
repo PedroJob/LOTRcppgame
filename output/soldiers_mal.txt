@@ -1,0 +1,3 @@
+Sauron tata 20 30 
+Orc velosum 100 30
+Ladrao ladrao 100 20
