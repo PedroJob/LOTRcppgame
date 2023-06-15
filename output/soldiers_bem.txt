@@ -1,3 +1,4 @@
+10
 Mago job 100 30
 Humano bilau 100 30
 Gollum gollum 100 20

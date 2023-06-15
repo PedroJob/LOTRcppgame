@@ -13,116 +13,123 @@ ladrao (HP: 100)
 
 QUE COMECEM OS JOGOS!
 
-velosum (HP: 100) versus anao (HP: 100)
+tata versus bilau
+
+-> bilau (HP: 100) ataca: 
+tata perde 30 pontos de vida, restam: 170
+
+-> tata (HP: 170) ataca: 
+bilau perde 28 pontos de vida, restam: 72
+
+-> bilau (HP: 72) ataca: 
+tata perde 30 pontos de vida, restam: 140
+
+-> tata (HP: 140) ataca: 
+bilau perde 33 pontos de vida, restam: 39
+
+-> bilau (HP: 39) ataca: 
+tata perde 30 pontos de vida, restam: 110
+
+-> tata (HP: 110) ataca: 
+bilau perde 22 pontos de vida, restam: 17
+
+-> bilau (HP: 17) ataca: 
+tata perde 30 pontos de vida, restam: 80
+
+-> tata (HP: 80) ataca: 
+FATALITY!
+
+VENCEDOR: tata
+
+MOTIVACAO! o Exercito do mal ganha 10% de saude e poder 
+
+velosum versus anao
 
 -> velosum (HP: 100) ataca: 
-anao perde 25 pontos de vida, restam: 75
+anao perde 21 pontos de vida, restam: 79
 
--> anao (HP: 75) ataca: 
+-> anao (HP: 79) ataca: 
+velosum perde 44 pontos de vida, restam: 56
+
+-> velosum (HP: 56) ataca: 
+anao perde 31 pontos de vida, restam: 48
+
+-> anao (HP: 48) ataca: 
 O anao errou o ataque :(
-velosum perde -2 pontos de vida, restam: 102
+velosum perde 7 pontos de vida, restam: 49
 
--> velosum (HP: 102) ataca: 
-Ataque duplo!
-anao perde 35 pontos de vida, restam: 40
-anao perde 39 pontos de vida, restam: 1
+-> velosum (HP: 49) ataca: 
+anao perde 33 pontos de vida, restam: 15
 
--> anao (HP: 1) ataca: 
-velosum perde 40 pontos de vida, restam: 62
+-> anao (HP: 15) ataca: 
+velosum perde 41 pontos de vida, restam: 8
 
--> velosum (HP: 62) ataca: 
+-> velosum (HP: 8) ataca: 
 FATALITY!
 
-velosum vence, anao morreu
+VENCEDOR: velosum
 
-tata (HP: 200) versus gollum (HP: 100)
+MOTIVACAO! o Exercito do mal ganha 10% de saude e poder 
+
+ladrao versus gollum
 
 -> gollum (HP: 100) ataca: 
-tata perde 27 pontos de vida, restam: 173
+O ladrao desviou do golpe, ladrao perde 0 pontos de vida, restam: 100
 
--> tata (HP: 173) ataca: 
-gollum perde 31 pontos de vida, restam: 69
-
--> gollum (HP: 69) ataca: 
-tata perde 30 pontos de vida, restam: 143
-
--> tata (HP: 143) ataca: 
-gollum perde 28 pontos de vida, restam: 41
-
--> gollum (HP: 41) ataca: 
-tata perde 27 pontos de vida, restam: 116
-
--> tata (HP: 116) ataca: 
-gollum perde 20 pontos de vida, restam: 21
-
--> gollum (HP: 21) ataca: 
-tata perde 23 pontos de vida, restam: 93
-
--> tata (HP: 93) ataca: 
+-> ladrao (HP: 100) ataca: 
+Ataque duplo!
+gollum perde 18 pontos de vida, restam: 82
 Contra-ataque!
-tata perde 20 pontos de vida, restam: 73
+ladrao perde 20 pontos de vida, restam: 80
 
--> gollum (HP: 21) ataca: 
-tata perde 20 pontos de vida, restam: 53
+-> gollum (HP: 82) ataca: 
+ladrao perde 12 pontos de vida, restam: 68
 
--> tata (HP: 53) ataca: 
-FATALITY!
+-> ladrao (HP: 68) ataca: 
+gollum perde 25 pontos de vida, restam: 57
 
-tata vence, gollum morreu
+-> gollum (HP: 57) ataca: 
+ladrao perde 11 pontos de vida, restam: 57
 
-ladrao (HP: 100) versus job (HP: 100)
+-> ladrao (HP: 57) ataca: 
+Contra-ataque!
+ladrao perde 20 pontos de vida, restam: 37
 
--> job (HP: 100) ataca: 
-ladrao perde 63 pontos de vida, restam: 37
+-> gollum (HP: 57) ataca: 
+O ladrao desviou do golpe, ladrao perde 0 pontos de vida, restam: 37
 
 -> ladrao (HP: 37) ataca: 
 Ataque duplo!
-O mago bloqueou o ataque, job perde 0 pontos de vida, restam: 100
-job perde 16 pontos de vida, restam: 84
-
--> job (HP: 84) ataca: 
-FATALITY!
-
-job vence, ladrao morreu
-
-tata (HP: 53) versus bilau (HP: 100)
-
--> tata (HP: 53) ataca: 
-Dobro de ataque!
-bilau perde 61 pontos de vida, restam: 39
-
--> bilau (HP: 39) ataca: 
-tata perde 28 pontos de vida, restam: 25
-
--> tata (HP: 25) ataca: 
-bilau perde 30 pontos de vida, restam: 9
-
--> bilau (HP: 9) ataca: 
-FATALITY!
-
-bilau vence, tata morreu
-
-velosum (HP: 62) versus bilau (HP: 9)
-
--> velosum (HP: 62) ataca: 
-Ataque duplo!
-FATALITY!
-FATALITY!
-
-velosum vence, bilau morreu
-
-velosum (HP: 62) versus job (HP: 84)
-
--> velosum (HP: 62) ataca: 
-job perde 26 pontos de vida, restam: 58
-
--> job (HP: 58) ataca: 
-velosum perde 56 pontos de vida, restam: 6
-
--> velosum (HP: 6) ataca: 
+Contra-ataque!
+ladrao perde 20 pontos de vida, restam: 17
 Contra-ataque!
 FATALITY!
 
-job vence, velosum morreu
+VENCEDOR: gollum
 
+MOTIVACAO! o Exercito do bem ganha 10% de saude e poder 
+
+tata versus job
+
+-> job (HP: 100) ataca: 
+tata perde 60 pontos de vida, restam: 20
+
+-> tata (HP: 20) ataca: 
+job perde 32 pontos de vida, restam: 68
+
+-> job (HP: 68) ataca: 
+FATALITY!
+
+VENCEDOR: job
+
+MOTIVACAO! o Exercito do bem ganha 10% de saude e poder 
+
+velosum versus gollum
+
+-> gollum (HP: 57) ataca: 
+FATALITY!
+
+VENCEDOR: gollum
+
+MOTIVACAO! o Exercito do bem ganha 10% de saude e poder 
 O EXERCITO DO BEM VENCEU

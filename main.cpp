@@ -10,8 +10,10 @@
 #include <windows.h>
 #include <fstream>
 
+#define delay 0
+
 using namespace std;
- 
+
 int random(int min, int max){
     random_device dev;
     mt19937 rng(dev());
@@ -49,8 +51,11 @@ struct Battle_log{
 
 ofstream Battle_log::battle_log("battle_log.txt");
 
+class Exercito; //forward declaration
+
 class Soldado
 {
+friend class Exercito;
 protected:
     string nome;
     float saude, poder;
@@ -75,7 +80,7 @@ public:
     virtual void defender(float p)
     {
         saude -= p;
-        if(saude < 0){
+        if(morreu()){
             bl << "FATALITY!\n"; 
             return;
         }
@@ -83,12 +88,26 @@ public:
     }
 
     bool morreu(){
-        if(saude <= 0.0){
-            return true;
+        return saude <= 0.0?true:false;
+    }
+
+    void operator*(Soldado &s){ //operador de luta
+        int i = random(0,1);
+        bl << "\n" << nome << " versus " << s.nome << "\n" << "\n";
+        while(!morreu() && !s.morreu()){
+            if(i % 2 == 0){
+                bl << "-> " << *this << " ataca: " << "\n";
+                atacar(s); 
+            }
+            else{
+                bl <<"-> "<< s << " ataca: " << "\n";
+                s.atacar(*this);
+            }
+            i++;
+            bl << "\n";
+            Sleep(delay);
         }
-        else{
-            return false;
-        }
+        return;
     }
 
     string getNome(){return nome;}
@@ -142,7 +161,7 @@ public:
         {
             bl << "Ataque duplo!\n";
             Soldado::atacar(s);
-            Soldado::atacar(s);
+            if(!s.morreu()){Soldado::atacar(s);};
         }
         else
         {
@@ -265,16 +284,19 @@ public:
 
 struct Exercito{
     vector<Soldado*> exercito;
-    int espirito_de_corpo;
-    ifstream army; 
+    int uniao;
+    ifstream army;
+    string nome_ex;
+    Battle_log bl;
 
-    Exercito(string army_file):espirito_de_corpo(0), army(army_file){
+    Exercito(string army_file, string n):army(army_file), nome_ex(n){
         if(!army.is_open()){
-            cout << "erro ao abrir arquivo" << endl;
-            return;
+            cout << "erro ao abrir arquivo do " << nome_ex << endl;
+            exit(1);
         }
         string classe, nome;
         float poder, vida;
+        army >> uniao;
         do{ 
             army >> classe >> nome >> poder >> vida;
 
@@ -304,6 +326,18 @@ struct Exercito{
 
         army.close();
     }
+
+    void operator++(int){//motivação
+        vector<Soldado*>::iterator it;
+
+        bl << "MOTIVACAO!" << " o " << nome_ex << " ganha " << uniao << "\% de saude e poder \n";  
+        for(it = exercito.begin(); it != exercito.end(); it++){
+            (**it).poder *= 1 + uniao/100;
+            (**it).saude *= 1 + uniao/100;
+        }
+
+        return;
+    }
 };
 
 class Confronto{
@@ -311,10 +345,9 @@ public:
     //vector <Soldado*> bem; 
     //vector <Soldado*> mal;
     Exercito bem, mal;
-    const int delay;
     Battle_log bl;
 
-    Confronto(int delay):bem("soldiers_bem.txt"), mal("soldiers_mal.txt"),delay(delay){
+    Confronto():bem("soldiers_bem.txt", "Exercito do bem"), mal("soldiers_mal.txt", "Exercito do mal"){
     }
 
     ~Confronto(){bl.battle_log.close();}
@@ -338,7 +371,7 @@ public:
         print(mal.exercito);
         Sleep(delay);
         system("cls");
-        bl << "QUE COMECEM OS JOGOS!\n" << "\n";
+        bl << "QUE COMECEM OS JOGOS!\n";
         Sleep(delay);
         system("cls");
     }
@@ -368,32 +401,17 @@ public:
             }
 
             while(mal_it != mal.exercito.end() && bem_it != bem.exercito.end()){
-                int i = random(0,1);
-                bl << (**mal_it) << " versus " << (**bem_it) << "\n" << "\n";
-
-                while(!(**mal_it).morreu() && !(**bem_it).morreu()){
-                    if(i % 2 == 0){
-                        bl << "-> " << (**mal_it) << " ataca: " << "\n";
-                        (**mal_it).atacar(**bem_it); 
-                    }
-                    else{
-                        bl <<"-> "<< (**bem_it) << " ataca: " << "\n";
-                        (**bem_it).atacar(**mal_it);
-                    }
-                    i++;
-                    bl << "\n";
-                    Sleep(delay);
-                }
+                (**mal_it)*(**bem_it);
 
                 if((**mal_it).morreu()){
-                    bl << (**bem_it).getNome() << " vence, ";
-                    bl << (**mal_it).getNome() << " morreu" << "\n" << "\n";
+                    bl << "VENCEDOR: " << (**bem_it).getNome() << "\n\n";
+                    bem++;
                     mal_it = mal.exercito.erase(mal_it);
                     bem_it++;
                 }
                 else if((**bem_it).morreu()){
-                    bl << (**mal_it).getNome() << " vence, ";
-                    bl << (**bem_it).getNome() << " morreu" << "\n" << "\n";
+                    bl << "VENCEDOR: " << (**mal_it).getNome() << "\n\n";
+                    mal++;
                     bem_it = bem.exercito.erase(bem_it);
                     mal_it++;
                 } 
@@ -416,7 +434,7 @@ public:
 
 int main()
 {   
-    Confronto c(0);
+    Confronto c;
 
     c.guerra();
 }
