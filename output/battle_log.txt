@@ -23,65 +23,48 @@ benção universal, capaz de curar e fortalecer seus companheiros, e um guerreir
 para contra-atacar os golpes dos adversários. A batalha final está prestes a começar. Qual lado você vai escolher?
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-darknight (HP: 100) versus elfo (HP: 100)
-
--> darknight (HP: 100) ataca: 
-elfo perde 51 pontos de vida, restam: 49
-
--> elfo (HP: 49) ataca: 
-darknight perde 21 pontos de vida, restam: 79
-
--> darknight (HP: 79) ataca: 
-FATALITY!
-
-VENCEDOR: darknight
-
-MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-arvore (HP: 100) versus bilau (HP: 100)
+arvore (HP: 100) versus job (HP: 100)
 
 -> arvore (HP: 100) ataca: 
-A arvore apavorou bilau com seus olhos tenebrosos!
+A arvore apavorou job com seus olhos tenebrosos!
 
--> bilau (HP: 100) ataca: 
-O bilau esta apavorado! Errou o ataque! arvore perde 0 pontos de vida, restam: 100
-arvore perde 35 pontos de vida, restam: 65
+-> job (HP: 100) ataca: 
+A arvore absorve o dano recebido e transforma em saude, ganhando 62 HP
 
--> arvore (HP: 65) ataca: 
-bilau perde 26 pontos de vida, restam: 74
+-> arvore (HP: 162) ataca: 
+job perde 20 pontos de vida, restam: 80
 
--> bilau (HP: 74) ataca: 
-O bilau esta apavorado! Errou o ataque! arvore perde 0 pontos de vida, restam: 65
-arvore perde 34 pontos de vida, restam: 31
+-> job (HP: 80) ataca: 
+arvore perde 60 pontos de vida, restam: 102
 
--> arvore (HP: 31) ataca: 
-bilau perde 17 pontos de vida, restam: 57
+-> arvore (HP: 102) ataca: 
+A arvore apavorou job com seus olhos tenebrosos!
 
--> bilau (HP: 57) ataca: 
+-> job (HP: 80) ataca: 
+O job esta apavorado! Errou o ataque! arvore perde 0 pontos de vida, restam: 102
+arvore perde 63 pontos de vida, restam: 39
+
+-> arvore (HP: 39) ataca: 
+job perde 21 pontos de vida, restam: 59
+
+-> job (HP: 59) ataca: 
+O job esta apavorado! Errou o ataque! arvore perde 0 pontos de vida, restam: 39
 FATALITY!
 
-VENCEDOR: bilau
+VENCEDOR: job
 
 MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-tata (HP: 200) versus guerreiro_mistico_da_agua (HP: 100)
+velosum (HP: 100) versus guerreiro_mistico_da_agua (HP: 100)
 
--> tata (HP: 200) ataca: 
+-> velosum (HP: 100) ataca: 
 Contra-ataque!
-tata perde 50 pontos de vida, restam: 150
+velosum perde 45 pontos de vida, restam: 55
 
--> guerreiro_mistico_da_agua (HP: 100) ataca: 
-tata perde 50 pontos de vida, restam: 100
+-> guerreiro_mistico_da_agua (HP: 61) ataca: 
+velosum perde 52 pontos de vida, restam: 3
 
--> tata (HP: 100) ataca: 
-Contra-ataque!
-tata perde 50 pontos de vida, restam: 50
-
--> guerreiro_mistico_da_agua (HP: 100) ataca: 
-tata perde 49 pontos de vida, restam: 1
-
--> tata (HP: 1) ataca: 
-Sauron confunde o inimigo com seu olhar tenebroso e desfere o dobro de ataque!
+-> velosum (HP: 3) ataca: 
 Contra-ataque!
 FATALITY!
 
@@ -89,52 +72,101 @@ VENCEDOR: guerreiro_mistico_da_agua
 
 MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-velosum (HP: 100) versus job (HP: 100)
+darknight (HP: 100) versus bilau (HP: 100)
 
--> job (HP: 100) ataca: 
-velosum perde 54 pontos de vida, restam: 46
+-> bilau (HP: 100) ataca: 
+O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, darknight perde 0 pontos de vida, restam: 100
 
--> velosum (HP: 46) ataca: 
-job perde 33 pontos de vida, restam: 67
+-> darknight (HP: 100) ataca: 
+bilau perde 52 pontos de vida, restam: 48
 
--> job (HP: 67) ataca: 
+-> bilau (HP: 48) ataca: 
+darknight perde 27 pontos de vida, restam: 73
+
+-> darknight (HP: 73) ataca: 
+Darknight utiliza sua lamina de sombras que corta até a luz e finaliza o inimigo!
+
+VENCEDOR: darknight
+
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+tata (HP: 200) versus elfo (HP: 100)
+
+-> tata (HP: 200) ataca: 
+elfo perde 29 pontos de vida, restam: 71
+
+-> elfo (HP: 71) ataca: 
+tata perde 15 pontos de vida, restam: 185
+
+-> tata (HP: 185) ataca: 
+elfo perde 30 pontos de vida, restam: 41
+
+-> elfo (HP: 41) ataca: 
+tata perde 23 pontos de vida, restam: 162
+
+-> tata (HP: 162) ataca: 
+elfo perde 35 pontos de vida, restam: 6
+
+-> elfo (HP: 6) ataca: 
+O elfo usou sua bencao universal, todo o exercito teve sua saude aumentada em: 30%
+
+-> tata (HP: 162) ataca: 
 FATALITY!
 
-VENCEDOR: job
+VENCEDOR: tata
 
-MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-darknight (HP: 79) versus anao (HP: 100)
+darknight (HP: 73) versus anao (HP: 101.3)
 
--> anao (HP: 100) ataca: 
-O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, darknight perde 0 pontos de vida, restam: 79
-
--> darknight (HP: 79) ataca: 
-anao perde 50 pontos de vida, restam: 50
-
--> anao (HP: 50) ataca: 
-darknight perde 43 pontos de vida, restam: 36
-
--> darknight (HP: 36) ataca: 
-anao perde 49 pontos de vida, restam: 1
-
--> anao (HP: 1) ataca: 
+-> anao (HP: 101.3) ataca: 
 O anao errou o ataque :(
-darknight perde 7 pontos de vida, restam: 29
+darknight perde -3 pontos de vida, restam: 76
 
--> darknight (HP: 29) ataca: 
+-> darknight (HP: 76) ataca: 
+anao perde 44 pontos de vida, restam: 57.3
+
+-> anao (HP: 57.3) ataca: 
+O anao errou o ataque :(
+darknight perde 1 pontos de vida, restam: 75
+
+-> darknight (HP: 75) ataca: 
+anao perde 56 pontos de vida, restam: 1.3
+
+-> anao (HP: 1.3) ataca: 
+darknight perde 41 pontos de vida, restam: 34
+
+-> darknight (HP: 34) ataca: 
 FATALITY!
 
 VENCEDOR: darknight
 
 MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-darknight (HP: 29) versus job (HP: 67)
+tata (HP: 162) versus job (HP: 60.3)
 
--> job (HP: 67) ataca: 
+-> tata (HP: 162) ataca: 
+job perde 26 pontos de vida, restam: 34.3
+
+-> job (HP: 34.3) ataca: 
+O job esta apavorado! Errou o ataque! tata perde 0 pontos de vida, restam: 162
+tata perde 56 pontos de vida, restam: 106
+
+-> tata (HP: 106) ataca: 
+Sauron confunde o inimigo com seu olhar tenebroso e desfere o dobro de ataque!
 FATALITY!
 
-VENCEDOR: job
+VENCEDOR: tata
 
-MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
-O EXERCITO DO BEM VENCEU
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+darknight (HP: 34) versus guerreiro_mistico_da_agua (HP: 29.3)
+
+-> darknight (HP: 34) ataca: 
+Contra-ataque!
+O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, darknight perde 0 pontos de vida, restam: 34
+
+VENCEDOR: darknight
+
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+O EXERCITO DO MAL VENCEU

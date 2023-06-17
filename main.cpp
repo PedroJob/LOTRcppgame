@@ -68,25 +68,25 @@ public:
 
     virtual void atacar(Soldado &s)
     {   
-        if(chance(s.chance_contra_ataque)){
-            bl << "Contra-ataque!\n";
-            this->defender(s.getPoder());
-            return;
-        }
-
-        if(pavor && chance(50)){
+        if(pavor && chance(20)){
             bl << "O " << nome << " esta apavorado! Errou o ataque! ";
-            s.defender(0);
+            s.defender(0, *this);
         }
 
         int RANGE = random(0, 10);
         int dano = random((int)poder - RANGE, (int)poder + RANGE);
-        s.defender(dano);
+        s.defender(dano, *this);
     }
 
-    virtual void defender(float p)
+    virtual void defender(float p, Soldado &rival)
     {
         saude -= p;
+        if(chance_contra_ataque){
+            bl << "Contra-ataque!\n";
+            atacar(rival);
+            return;
+        }
+
         if(morreu()){
             bl << "FATALITY!\n"; 
             return;
@@ -236,18 +236,18 @@ class Mago : public Soldado //o mago tem um poderoso escudo áureo
 public:
     Mago(string nome, float s, float p) : Soldado(nome, s, p + 30) {}
 
-    void defender(float p) // 10% de chance de bloquear um ataque com seu escudo mágico
+    void defender(float p, Soldado& rival) // 10% de chance de bloquear um ataque com seu escudo mágico
     {
         if (chance(10)) //toda vez que o mago bloqueia um ataque, aumenta sua chance de contra-ataque
         {
             bl << "O mago bloqueou o ataque com seu escudo aureo, ";
-            Soldado::defender(0);
+            Soldado::defender(0, rival);
             chance_contra_ataque += 15;
             return;
         }
         else
         {
-            Soldado::defender(p);
+            Soldado::defender(p, rival);
         }
     }
 };
@@ -256,15 +256,15 @@ class Darknight: public Soldado{
 public:
     Darknight(string nome, float s, float p) : Soldado(nome, s, p) {}
 
-    void defender(float p)  //20% chance de bloquear com seu escudo sinistro
+    void defender(float p, Soldado& rival)  //20% chance de bloquear com seu escudo sinistro
     {
         if(chance(30)){ 
             bl << "O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, ";
-            Soldado::defender(0);
+            Soldado::defender(0, rival);
             return;
         }
         else{
-            Soldado::defender(p);
+            Soldado::defender(p, rival);
         }
     }
 
@@ -288,7 +288,7 @@ class Arvrok: public Soldado{
 public:
     Arvrok(string nome, float s, float p) : Soldado(nome, s, p) {}
 
-    void atacar(Soldado &s) //a árvore fantasma tem uma chance de 30% de deixar o inimigo apavorado, aumentando sua chance de errar ataques em 50%;
+    void atacar(Soldado &s) //a árvore fantasma tem uma chance de 30% de deixar o inimigo apavorado, aumentando sua chance de errar ataques em 20%;
     {
         if (chance(30))
         {
@@ -302,7 +302,7 @@ public:
         return;
     }
 
-    void defender(float p) //20% de chance curar o mesmo dano que sofreu
+    void defender(float p, Soldado& rival) //20% de chance curar o mesmo dano que sofreu
     {
         if(chance(20)){
             bl << "A arvore absorve o dano recebido e transforma em saude, ganhando " << p << " HP\n";
@@ -310,7 +310,7 @@ public:
             return;
         }
         else{
-            Soldado::defender(p);
+            Soldado::defender(p, rival);
         }
     }
 };
@@ -373,14 +373,14 @@ public:
         print(mal.exercito);
         Sleep(delay);
         system("cls");
-        bl << "O mundo está em guerra. De um lado, o exército vermelho, comandado pelo terrível Sauron, um ser de poder\n";
-        bl << "incomensurável que deseja dominar todas as terras. Ao seu lado, lutam orcs ferozes e sanguinários, um cavaleiro das\n";
-        bl << "trevas chamado Darknight, que possui uma lâmina capaz de matar com um só golpe, e uma árvore gigante chamada\n";
-        bl << "Arvrok, que espalha o terror e a confusão entre os inimigos com seus galhos e raízes. Do outro lado, o exército branco,\n";
-        bl << "liderado por um sábio e poderoso mago, que protege seus aliados com um escudo mágico impenetrável. Junto com\n";
-        bl << "ele, combatem bravos anões e humanos, armados com machados e espadas, um elfo curandeiro que tem o dom da\n";
-        bl << "benção universal, capaz de curar e fortalecer seus companheiros, e um guerreiro místico da água, que usa sua espada de agua\n";
-        bl << "para contra-atacar os golpes dos adversários. A batalha final está prestes a começar. Qual lado você vai escolher?\n\n";
+        bl << "O mundo esta em guerra. De um lado, o exercito vermelho, comandado pelo terrivel Sauron, um ser de poder\n";
+        bl << "incomensuravel que deseja dominar todas as terras. Ao seu lado, lutam orcs ferozes e sanguinarios, um cavaleiro das\n";
+        bl << "trevas chamado Darknight, que possui uma lamina capaz de matar com um so golpe, e uma arvore gigante chamada\n";
+        bl << "Arvrok, que espalha o terror e a confusao entre os inimigos com seus galhos e raizes. Do outro lado, o exercito branco,\n";
+        bl << "liderado por um sabio e poderoso mago, que protege seus aliados com um escudo mágico impenetrável. Junto com\n";
+        bl << "ele, combatem bravos anoes e humanos, armados com machados e espadas, um elfo curandeiro que tem o dom da\n";
+        bl << "bencao universal, capaz de curar e fortalecer seus companheiros, e um guerreiro mistico da agua, que usa sua espada de agua\n";
+        bl << "para contra-atacar os golpes dos adversarios. A batalha final esta prestes a começar. Qual lado voce vai escolher?\n\n";
         Sleep(delay);
         system("cls");
     }

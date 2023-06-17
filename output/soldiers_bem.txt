@@ -1,6 +1,6 @@
 10 
 Mago job 100 30
-Humano bilau 100 30
+Humano human 100 30
 Guerreiro guerreiro_mistico_da_agua 100 50
 Elfo elfo 100 20
 Anao anao 100 20
