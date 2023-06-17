@@ -1,7 +1,7 @@
 Exercito do bem: 
 
 job (HP: 100)
-bilau (HP: 100)
+human (HP: 100)
 guerreiro_mistico_da_agua (HP: 100)
 elfo (HP: 100)
 anao (HP: 100)
@@ -9,62 +9,136 @@ anao (HP: 100)
 Exercito do mal: 
 
 tata (HP: 200)
-velosum (HP: 100)
+veloz (HP: 100)
 darknight (HP: 100)
 arvore (HP: 100)
 
-O mundo está em guerra. De um lado, o exército vermelho, comandado pelo terrível Sauron, um ser de poder
-incomensurável que deseja dominar todas as terras. Ao seu lado, lutam orcs ferozes e sanguinários, um cavaleiro das
-trevas chamado Darknight, que possui uma lâmina capaz de matar com um só golpe, e uma árvore gigante chamada
-Arvrok, que espalha o terror e a confusão entre os inimigos com seus galhos e raízes. Do outro lado, o exército branco,
-liderado por um sábio e poderoso mago, que protege seus aliados com um escudo mágico impenetrável. Junto com
-ele, combatem bravos anões e humanos, armados com machados e espadas, um elfo curandeiro que tem o dom da
-benção universal, capaz de curar e fortalecer seus companheiros, e um guerreiro místico da água, que usa sua espada de agua
-para contra-atacar os golpes dos adversários. A batalha final está prestes a começar. Qual lado você vai escolher?
+O mundo esta em guerra. De um lado, o exercito vermelho, comandado pelo terrivel Sauron, um ser de poder
+incomensuravel que deseja dominar todas as terras. Ao seu lado, lutam orcs ferozes e sanguinarios, um cavaleiro das
+trevas chamado Darknight, que possui uma lamina capaz de matar com um so golpe, e uma arvore gigante chamada
+Arvrok, que espalha o terror e a confusao entre os inimigos com seus galhos e raizes. Do outro lado, o exercito branco,
+liderado por um sabio e poderoso mago, que protege seus aliados com um escudo magico impenetravel. Junto com
+ele, combatem bravos anoes e humanos, armados com machados e espadas, um elfo curandeiro que tem o dom da
+bencao universal, capaz de curar e fortalecer seus companheiros, e um guerreiro mistico da agua, que usa sua espada de agua
+para contra-atacar os golpes dos adversarios. A batalha final esta prestes a comecar. Qual lado voce vai escolher?
 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-arvore (HP: 100) versus job (HP: 100)
+arvore (HP: 100) versus guerreiro_mistico_da_agua (HP: 100)
 
--> arvore (HP: 100) ataca: 
-A arvore apavorou job com seus olhos tenebrosos!
+-> guerreiro_mistico_da_agua (HP: 100) ataca: 
+arvore perde 53 pontos de vida, restam: 47
 
--> job (HP: 100) ataca: 
-A arvore absorve o dano recebido e transforma em saude, ganhando 62 HP
+-> arvore (HP: 47) ataca: 
+A arvore apavorou guerreiro_mistico_da_agua com seus olhos tenebrosos!
 
--> arvore (HP: 162) ataca: 
-job perde 20 pontos de vida, restam: 80
-
--> job (HP: 80) ataca: 
-arvore perde 60 pontos de vida, restam: 102
-
--> arvore (HP: 102) ataca: 
-A arvore apavorou job com seus olhos tenebrosos!
-
--> job (HP: 80) ataca: 
-O job esta apavorado! Errou o ataque! arvore perde 0 pontos de vida, restam: 102
-arvore perde 63 pontos de vida, restam: 39
-
--> arvore (HP: 39) ataca: 
-job perde 21 pontos de vida, restam: 59
-
--> job (HP: 59) ataca: 
-O job esta apavorado! Errou o ataque! arvore perde 0 pontos de vida, restam: 39
+-> guerreiro_mistico_da_agua (HP: 100) ataca: 
 FATALITY!
 
-VENCEDOR: job
+VENCEDOR: guerreiro_mistico_da_agua
 
 MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-velosum (HP: 100) versus guerreiro_mistico_da_agua (HP: 100)
+tata (HP: 200) versus anao (HP: 100)
 
--> velosum (HP: 100) ataca: 
-Contra-ataque!
-velosum perde 45 pontos de vida, restam: 55
+-> anao (HP: 100) ataca: 
+tata perde 40 pontos de vida, restam: 160
 
--> guerreiro_mistico_da_agua (HP: 61) ataca: 
-velosum perde 52 pontos de vida, restam: 3
+-> tata (HP: 160) ataca: 
+anao perde 31 pontos de vida, restam: 69
 
--> velosum (HP: 3) ataca: 
+-> anao (HP: 69) ataca: 
+tata perde 46 pontos de vida, restam: 114
+
+-> tata (HP: 114) ataca: 
+Sauron confunde o inimigo com seu olhar tenebroso e desfere o dobro de ataque!
+anao perde 65 pontos de vida, restam: 4
+
+-> anao (HP: 4) ataca: 
+O anao errou o ataque :(
+
+-> tata (HP: 114) ataca: 
+FATALITY!
+
+VENCEDOR: tata
+
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+darknight (HP: 100) versus job (HP: 100)
+
+-> darknight (HP: 100) ataca: 
+Darknight utiliza sua lamina de sombras que corta ate a luz e finaliza o inimigo!
+
+VENCEDOR: darknight
+
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+veloz (HP: 100) versus human (HP: 100)
+
+-> veloz (HP: 100) ataca: 
+human perde 24 pontos de vida, restam: 76
+
+-> human (HP: 76) ataca: 
+veloz perde 29 pontos de vida, restam: 71
+
+-> veloz (HP: 71) ataca: 
+human perde 26 pontos de vida, restam: 50
+
+-> human (HP: 50) ataca: 
+O humano desferiu um ataque duplo!
+veloz perde 31 pontos de vida, restam: 40
+veloz perde 25 pontos de vida, restam: 15
+
+-> veloz (HP: 15) ataca: 
+human perde 30 pontos de vida, restam: 20
+
+-> human (HP: 20) ataca: 
+O humano desferiu um ataque duplo!
+FATALITY!
+
+VENCEDOR: human
+
+MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+darknight (HP: 100) versus elfo (HP: 100)
+
+-> darknight (HP: 100) ataca: 
+elfo perde 51 pontos de vida, restam: 49
+
+-> elfo (HP: 49) ataca: 
+O elfo usou sua bencao universal, todo o exercito teve sua saude aumentada em: 30%
+
+-> darknight (HP: 100) ataca: 
+elfo perde 49 pontos de vida, restam: 1.3
+
+-> elfo (HP: 1.3) ataca: 
+O elfo usou sua bencao universal, todo o exercito teve sua saude aumentada em: 30%
+
+-> darknight (HP: 100) ataca: 
+FATALITY!
+
+VENCEDOR: darknight
+
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+tata (HP: 114) versus human (HP: 22.6)
+
+-> human (HP: 22.6) ataca: 
+tata perde 24 pontos de vida, restam: 90
+
+-> tata (HP: 90) ataca: 
+FATALITY!
+
+VENCEDOR: tata
+
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+tata (HP: 90) versus guerreiro_mistico_da_agua (HP: 102.6)
+
+-> guerreiro_mistico_da_agua (HP: 102.6) ataca: 
+tata perde 49 pontos de vida, restam: 41
+
+-> tata (HP: 41) ataca: 
+Sauron confunde o inimigo com seu olhar tenebroso e desfere o dobro de ataque!
 Contra-ataque!
 FATALITY!
 
@@ -72,99 +146,11 @@ VENCEDOR: guerreiro_mistico_da_agua
 
 MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
 ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-darknight (HP: 100) versus bilau (HP: 100)
-
--> bilau (HP: 100) ataca: 
-O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, darknight perde 0 pontos de vida, restam: 100
+darknight (HP: 100) versus guerreiro_mistico_da_agua (HP: 46.6)
 
 -> darknight (HP: 100) ataca: 
-bilau perde 52 pontos de vida, restam: 48
-
--> bilau (HP: 48) ataca: 
-darknight perde 27 pontos de vida, restam: 73
-
--> darknight (HP: 73) ataca: 
-Darknight utiliza sua lamina de sombras que corta até a luz e finaliza o inimigo!
-
-VENCEDOR: darknight
-
-MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-tata (HP: 200) versus elfo (HP: 100)
-
--> tata (HP: 200) ataca: 
-elfo perde 29 pontos de vida, restam: 71
-
--> elfo (HP: 71) ataca: 
-tata perde 15 pontos de vida, restam: 185
-
--> tata (HP: 185) ataca: 
-elfo perde 30 pontos de vida, restam: 41
-
--> elfo (HP: 41) ataca: 
-tata perde 23 pontos de vida, restam: 162
-
--> tata (HP: 162) ataca: 
-elfo perde 35 pontos de vida, restam: 6
-
--> elfo (HP: 6) ataca: 
-O elfo usou sua bencao universal, todo o exercito teve sua saude aumentada em: 30%
-
--> tata (HP: 162) ataca: 
-FATALITY!
-
-VENCEDOR: tata
-
-MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-darknight (HP: 73) versus anao (HP: 101.3)
-
--> anao (HP: 101.3) ataca: 
-O anao errou o ataque :(
-darknight perde -3 pontos de vida, restam: 76
-
--> darknight (HP: 76) ataca: 
-anao perde 44 pontos de vida, restam: 57.3
-
--> anao (HP: 57.3) ataca: 
-O anao errou o ataque :(
-darknight perde 1 pontos de vida, restam: 75
-
--> darknight (HP: 75) ataca: 
-anao perde 56 pontos de vida, restam: 1.3
-
--> anao (HP: 1.3) ataca: 
-darknight perde 41 pontos de vida, restam: 34
-
--> darknight (HP: 34) ataca: 
-FATALITY!
-
-VENCEDOR: darknight
-
-MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-tata (HP: 162) versus job (HP: 60.3)
-
--> tata (HP: 162) ataca: 
-job perde 26 pontos de vida, restam: 34.3
-
--> job (HP: 34.3) ataca: 
-O job esta apavorado! Errou o ataque! tata perde 0 pontos de vida, restam: 162
-tata perde 56 pontos de vida, restam: 106
-
--> tata (HP: 106) ataca: 
-Sauron confunde o inimigo com seu olhar tenebroso e desfere o dobro de ataque!
-FATALITY!
-
-VENCEDOR: tata
-
-MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
-■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-darknight (HP: 34) versus guerreiro_mistico_da_agua (HP: 29.3)
-
--> darknight (HP: 34) ataca: 
 Contra-ataque!
-O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, darknight perde 0 pontos de vida, restam: 34
+O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, darknight perde 0 pontos de vida, restam: 100
 
 VENCEDOR: darknight
 

@@ -138,14 +138,9 @@ public:
 
     void atacar(Soldado &s)
     {   
-        float aux = poder;
-
         if (chance(40))
         {
             bl << "O anao errou o ataque :(\n";
-            poder = 0;
-            Soldado::atacar(s);
-            poder = aux;
             return;
         }
         else
@@ -272,7 +267,7 @@ public:
     {
         if (chance(10))
         {
-            bl << "Darknight utiliza sua lamina de sombras que corta até a luz e finaliza o inimigo!" << "\n"; 
+            bl << "Darknight utiliza sua lamina de sombras que corta ate a luz e finaliza o inimigo!" << "\n"; 
             s.setSaude(0);
             return;
         }
@@ -377,11 +372,12 @@ public:
         bl << "incomensuravel que deseja dominar todas as terras. Ao seu lado, lutam orcs ferozes e sanguinarios, um cavaleiro das\n";
         bl << "trevas chamado Darknight, que possui uma lamina capaz de matar com um so golpe, e uma arvore gigante chamada\n";
         bl << "Arvrok, que espalha o terror e a confusao entre os inimigos com seus galhos e raizes. Do outro lado, o exercito branco,\n";
-        bl << "liderado por um sabio e poderoso mago, que protege seus aliados com um escudo mágico impenetrável. Junto com\n";
+        bl << "liderado por um sabio e poderoso mago, que protege seus aliados com um escudo magico impenetravel. Junto com\n";
         bl << "ele, combatem bravos anoes e humanos, armados com machados e espadas, um elfo curandeiro que tem o dom da\n";
         bl << "bencao universal, capaz de curar e fortalecer seus companheiros, e um guerreiro mistico da agua, que usa sua espada de agua\n";
-        bl << "para contra-atacar os golpes dos adversarios. A batalha final esta prestes a começar. Qual lado voce vai escolher?\n\n";
-        Sleep(delay);
+        bl << "para contra-atacar os golpes dos adversarios. A batalha final esta prestes a comecar. Qual lado voce vai escolher?\n\n";
+        cout << "Aperte enter para continuar... ";
+        cin.get();
         system("cls");
     }
 
