@@ -14,7 +14,7 @@
 
 using namespace std;
 
-int random(int min, int max){
+inline int random(int min, int max){
     random_device dev;
     mt19937 rng(dev());
     uniform_int_distribution<mt19937::result_type> dist(min,max);
@@ -22,7 +22,7 @@ int random(int min, int max){
     return (int)dist(rng); 
 }
 
-bool chance(int perc){
+inline bool chance(int perc){
     int r = random(1,100);
 
     if(r <= perc){
@@ -51,19 +51,20 @@ struct Battle_log{
 
 ofstream Battle_log::battle_log("battle_log.txt");
 
-class Exercito; //forward declaration
+class Exercito;
 
 class Soldado
 {
 friend class Exercito;
 protected:
     string nome;
-    float saude, poder;
+    float saude, poder, full_hp;
     int chance_contra_ataque;
+    bool pavor; 
     Battle_log bl;
 
 public:
-    Soldado(string nome, float s, float p, int chance = 0) : nome(nome), saude(s), poder(p), chance_contra_ataque(chance){}
+    Soldado(string nome, float s, float p, int chance = 0, bool pavor = false) : nome(nome), saude(s), poder(p), full_hp(s),chance_contra_ataque(chance), pavor(pavor){}
 
     virtual void atacar(Soldado &s)
     {   
@@ -72,6 +73,12 @@ public:
             this->defender(s.getPoder());
             return;
         }
+
+        if(pavor && chance(50)){
+            bl << "O " << nome << " esta apavorado! Errou o ataque! ";
+            s.defender(0);
+        }
+
         int RANGE = random(0, 10);
         int dano = random((int)poder - RANGE, (int)poder + RANGE);
         s.defender(dano);
@@ -93,7 +100,8 @@ public:
 
     void operator*(Soldado &s){ //operador de luta
         int i = random(0,1);
-        bl << "\n" << nome << " versus " << s.nome << "\n" << "\n";
+        if(delay == 0){bl << "\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0";}
+        bl << "\n" << *this << " versus " << s << "\n" << "\n";
         while(!morreu() && !s.morreu()){
             if(i % 2 == 0){
                 bl << "-> " << *this << " ataca: " << "\n";
@@ -110,20 +118,17 @@ public:
         return;
     }
 
+    friend ostream& operator<<(ostream &os, Soldado &s){
+        os << s.getNome() << " (HP: " << s.getSaude() << ")";
+        return os; 
+    }
+
     string getNome(){return nome;}
     float getSaude(){return saude;}
+    float getFullhp(){return full_hp;}
     float getPoder(){return poder;}
-};
-
-ostream& operator<<(ostream &os, Soldado &s){
-    os << s.getNome() << " (HP: " << s.getSaude() << ")";
-    return os; 
-}
-
-class Elfo : public Soldado
-{
-public:
-    Elfo(string nome, float s, float p) : Soldado(nome, s, p + 1) {}
+    void setPavor(bool pav){pavor = pav;}
+    void setSaude(float p){saude = p;}
 };
 
 class Anao : public Soldado
@@ -159,7 +164,7 @@ public:
     {
         if (chance(10))
         {
-            bl << "Ataque duplo!\n";
+            bl << "O humano desferiu um ataque duplo!\n";
             Soldado::atacar(s);
             if(!s.morreu()){Soldado::atacar(s);};
         }
@@ -171,10 +176,10 @@ public:
     }
 };
 
-class Gollum : public Soldado{
+class Guerreiro_mistico_da_agua : public Soldado{
 public:
-    //Gollum tem 20% de chance de contra-atacar "MY PRECIOUSSS"
-    Gollum(string nome, float s, float p) : Soldado(nome, s, p, 20){}
+    //O guerreiro mistico da agua tem 20% de chance de contra-atacar
+    Guerreiro_mistico_da_agua(string nome, float s, float p) : Soldado(nome, s, p, 20){}
 };
 
 class Sauron : public Soldado
@@ -187,7 +192,7 @@ public:
         float aux = poder; 
         if (chance(30))
         {   
-            bl << "Dobro de ataque!\n";
+            bl << "Sauron confunde o inimigo com seu olhar tenebroso e desfere o dobro de ataque!\n";
             poder *= 2;
             Soldado::atacar(s);
         }
@@ -211,7 +216,7 @@ public:
         float aux = poder;
         if (chance(20))
         {
-            bl << "Ataque duplo!\n";
+            bl << "O orc desfere um ataque duplo com sua machadinhas!\n";
             poder *= 1.1; 
             Soldado::atacar(s);
             Soldado::atacar(s);
@@ -220,7 +225,7 @@ public:
         {
             Soldado::atacar(s);
         }
-
+ 
         poder = aux;
         return;
     }
@@ -235,7 +240,7 @@ public:
     {
         if (chance(10)) //toda vez que o mago bloqueia um ataque, aumenta sua chance de contra-ataque
         {
-            bl << "O mago bloqueou o ataque, ";
+            bl << "O mago bloqueou o ataque com seu escudo aureo, ";
             Soldado::defender(0);
             chance_contra_ataque += 15;
             return;
@@ -247,14 +252,14 @@ public:
     }
 };
 
-class Ladrao: public Soldado{
+class Darknight: public Soldado{
 public:
-    Ladrao(string nome, float s, float p) : Soldado(nome, s, p) {}
+    Darknight(string nome, float s, float p) : Soldado(nome, s, p) {}
 
-    void defender(float p) //20% de chance de desviar do ataque
+    void defender(float p)  //20% chance de bloquear com seu escudo sinistro
     {
-        if(chance(20)){
-            bl << "O ladrao desviou do golpe, ";
+        if(chance(30)){ 
+            bl << "O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, ";
             Soldado::defender(0);
             return;
         }
@@ -263,22 +268,50 @@ public:
         }
     }
 
-    void atacar(Soldado &s)
+    void atacar(Soldado &s) //10% de chance de dar HITKILL
     {
-        float aux = poder;
-        if (chance(20))
+        if (chance(10))
         {
-            bl << "Ataque duplo!" << "\n"; 
-            Soldado::atacar(s);
-            Soldado::atacar(s);
+            bl << "Darknight utiliza sua lamina de sombras que corta até a luz e finaliza o inimigo!" << "\n"; 
+            s.setSaude(0);
+            return;
         }
         else
         {
             Soldado::atacar(s);
         }
-
-        poder = aux;
         return;
+    }
+};
+
+class Arvrok: public Soldado{
+public:
+    Arvrok(string nome, float s, float p) : Soldado(nome, s, p) {}
+
+    void atacar(Soldado &s) //a árvore fantasma tem uma chance de 30% de deixar o inimigo apavorado, aumentando sua chance de errar ataques em 50%;
+    {
+        if (chance(30))
+        {
+            bl << "A arvore apavorou " << s.getNome() << " com seus olhos tenebrosos!\n"; 
+            s.setPavor(true);
+        }
+        else
+        {
+            Soldado::atacar(s);
+        }
+        return;
+    }
+
+    void defender(float p) //20% de chance curar o mesmo dano que sofreu
+    {
+        if(chance(20)){
+            bl << "A arvore absorve o dano recebido e transforma em saude, ganhando " << p << " HP\n";
+            saude += p;
+            return;
+        }
+        else{
+            Soldado::defender(p);
+        }
     }
 };
 
@@ -289,43 +322,7 @@ struct Exercito{
     string nome_ex;
     Battle_log bl;
 
-    Exercito(string army_file, string n):army(army_file), nome_ex(n){
-        if(!army.is_open()){
-            cout << "erro ao abrir arquivo do " << nome_ex << endl;
-            exit(1);
-        }
-        string classe, nome;
-        float poder, vida;
-        army >> uniao;
-        do{ 
-            army >> classe >> nome >> poder >> vida;
-
-            if(classe == "Mago"){
-                exercito.push_back(new Mago(nome, poder, vida));
-            }
-            if(classe == "Humano"){
-                exercito.push_back(new Humano(nome, poder, vida));
-            }
-            if(classe == "Gollum"){
-                exercito.push_back(new Gollum(nome, poder, vida));
-            }
-            if(classe == "Anao"){
-                exercito.push_back(new Anao(nome, poder, vida));
-            }
-            if(classe == "Sauron"){
-                exercito.push_back(new Sauron(nome, poder, vida));
-            }
-            if(classe == "Orc"){
-                exercito.push_back(new Orc(nome, poder, vida));
-            }
-            if(classe == "Ladrao"){
-                exercito.push_back(new Ladrao(nome, poder, vida));
-            }
-
-        }while(!army.eof());
-
-        army.close();
-    }
+    Exercito(string army_file, string n);
 
     void operator++(int){//motivação
         vector<Soldado*>::iterator it;
@@ -338,17 +335,22 @@ struct Exercito{
 
         return;
     }
+
+    void curar(float p){
+        vector<Soldado*>::iterator it;
+
+        for(it = exercito.begin(); it != exercito.end(); it++){
+            (**it).saude += p;
+        }
+    }
 };
 
 class Confronto{
 public:
     //vector <Soldado*> bem; 
     //vector <Soldado*> mal;
-    Exercito bem, mal;
+    static Exercito bem, mal;
     Battle_log bl;
-
-    Confronto():bem("soldiers_bem.txt", "Exercito do bem"), mal("soldiers_mal.txt", "Exercito do mal"){
-    }
 
     ~Confronto(){bl.battle_log.close();}
 
@@ -371,7 +373,14 @@ public:
         print(mal.exercito);
         Sleep(delay);
         system("cls");
-        bl << "QUE COMECEM OS JOGOS!\n";
+        bl << "O mundo está em guerra. De um lado, o exército vermelho, comandado pelo terrível Sauron, um ser de poder\n";
+        bl << "incomensurável que deseja dominar todas as terras. Ao seu lado, lutam orcs ferozes e sanguinários, um cavaleiro das\n";
+        bl << "trevas chamado Darknight, que possui uma lâmina capaz de matar com um só golpe, e uma árvore gigante chamada\n";
+        bl << "Arvrok, que espalha o terror e a confusão entre os inimigos com seus galhos e raízes. Do outro lado, o exército branco,\n";
+        bl << "liderado por um sábio e poderoso mago, que protege seus aliados com um escudo mágico impenetrável. Junto com\n";
+        bl << "ele, combatem bravos anões e humanos, armados com machados e espadas, um elfo curandeiro que tem o dom da\n";
+        bl << "benção universal, capaz de curar e fortalecer seus companheiros, e um guerreiro místico da água, que usa sua espada de agua\n";
+        bl << "para contra-atacar os golpes dos adversários. A batalha final está prestes a começar. Qual lado você vai escolher?\n\n";
         Sleep(delay);
         system("cls");
     }
@@ -430,6 +439,74 @@ public:
         }
     }
 };
+
+Exercito Confronto::bem("soldiers_bem.txt", "Exercito branco");
+Exercito Confronto::mal("soldiers_mal.txt", "Exercito vermelho");
+
+class Elfo : public Soldado
+{
+    float cura;
+public:
+    Elfo(string nome, float s, float p) : Soldado(nome, s, p + 1), cura(1.3){}
+
+    void atacar(Soldado &s) //o elfo tem a benção universal, que cura todos os seus companheiros
+    {
+        if (chance(30))
+        {
+            bl << "O elfo usou sua bencao universal, todo o exercito teve sua saude aumentada em: " << (cura-1)*100 <<"%\n"; 
+            Confronto::bem.curar(cura);
+        }
+        else
+        {
+            Soldado::atacar(s);
+        }
+        return;
+    }
+
+};
+
+Exercito::Exercito(string army_file, string n):army(army_file), nome_ex(n){
+    if(!army.is_open()){
+        cout << "erro ao abrir arquivo do " << nome_ex << endl;
+        exit(1);
+    }
+    string classe, nome;
+    float poder, vida;
+    army >> uniao;
+    do{ 
+        army >> classe >> nome >> poder >> vida;
+
+        if(classe == "Mago"){
+            exercito.push_back(new Mago(nome, poder, vida));
+        }
+        if(classe == "Humano"){
+            exercito.push_back(new Humano(nome, poder, vida));
+        }
+        if(classe == "Guerreiro"){
+            exercito.push_back(new Guerreiro_mistico_da_agua(nome, poder, vida));
+        }
+        if(classe == "Anao"){
+            exercito.push_back(new Anao(nome, poder, vida));
+        }
+        if(classe == "Sauron"){
+            exercito.push_back(new Sauron(nome, poder, vida));
+        }
+        if(classe == "Orc"){
+            exercito.push_back(new Orc(nome, poder, vida));
+        }
+        if(classe == "Darknight"){
+            exercito.push_back(new Darknight(nome, poder, vida));
+        }
+        if(classe == "Elfo"){
+            exercito.push_back(new Elfo(nome, poder, vida));
+        }
+        if(classe == "Arvrok"){
+            exercito.push_back(new Arvrok(nome, poder, vida));
+        }
+    }while(!army.eof());
+
+    army.close();
+}
 
 
 int main()

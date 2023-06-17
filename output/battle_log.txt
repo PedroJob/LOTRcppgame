@@ -2,134 +2,139 @@ Exercito do bem:
 
 job (HP: 100)
 bilau (HP: 100)
-gollum (HP: 100)
+guerreiro_mistico_da_agua (HP: 100)
+elfo (HP: 100)
 anao (HP: 100)
 
 Exercito do mal: 
 
 tata (HP: 200)
 velosum (HP: 100)
-ladrao (HP: 100)
+darknight (HP: 100)
+arvore (HP: 100)
 
-QUE COMECEM OS JOGOS!
+O mundo está em guerra. De um lado, o exército vermelho, comandado pelo terrível Sauron, um ser de poder
+incomensurável que deseja dominar todas as terras. Ao seu lado, lutam orcs ferozes e sanguinários, um cavaleiro das
+trevas chamado Darknight, que possui uma lâmina capaz de matar com um só golpe, e uma árvore gigante chamada
+Arvrok, que espalha o terror e a confusão entre os inimigos com seus galhos e raízes. Do outro lado, o exército branco,
+liderado por um sábio e poderoso mago, que protege seus aliados com um escudo mágico impenetrável. Junto com
+ele, combatem bravos anões e humanos, armados com machados e espadas, um elfo curandeiro que tem o dom da
+benção universal, capaz de curar e fortalecer seus companheiros, e um guerreiro místico da água, que usa sua espada de agua
+para contra-atacar os golpes dos adversários. A batalha final está prestes a começar. Qual lado você vai escolher?
 
-tata versus bilau
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+darknight (HP: 100) versus elfo (HP: 100)
+
+-> darknight (HP: 100) ataca: 
+elfo perde 51 pontos de vida, restam: 49
+
+-> elfo (HP: 49) ataca: 
+darknight perde 21 pontos de vida, restam: 79
+
+-> darknight (HP: 79) ataca: 
+FATALITY!
+
+VENCEDOR: darknight
+
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+arvore (HP: 100) versus bilau (HP: 100)
+
+-> arvore (HP: 100) ataca: 
+A arvore apavorou bilau com seus olhos tenebrosos!
 
 -> bilau (HP: 100) ataca: 
-tata perde 30 pontos de vida, restam: 170
+O bilau esta apavorado! Errou o ataque! arvore perde 0 pontos de vida, restam: 100
+arvore perde 35 pontos de vida, restam: 65
 
--> tata (HP: 170) ataca: 
-bilau perde 28 pontos de vida, restam: 72
+-> arvore (HP: 65) ataca: 
+bilau perde 26 pontos de vida, restam: 74
 
--> bilau (HP: 72) ataca: 
-tata perde 30 pontos de vida, restam: 140
+-> bilau (HP: 74) ataca: 
+O bilau esta apavorado! Errou o ataque! arvore perde 0 pontos de vida, restam: 65
+arvore perde 34 pontos de vida, restam: 31
 
--> tata (HP: 140) ataca: 
-bilau perde 33 pontos de vida, restam: 39
+-> arvore (HP: 31) ataca: 
+bilau perde 17 pontos de vida, restam: 57
 
--> bilau (HP: 39) ataca: 
-tata perde 30 pontos de vida, restam: 110
-
--> tata (HP: 110) ataca: 
-bilau perde 22 pontos de vida, restam: 17
-
--> bilau (HP: 17) ataca: 
-tata perde 30 pontos de vida, restam: 80
-
--> tata (HP: 80) ataca: 
+-> bilau (HP: 57) ataca: 
 FATALITY!
 
-VENCEDOR: tata
+VENCEDOR: bilau
 
-MOTIVACAO! o Exercito do mal ganha 10% de saude e poder 
+MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+tata (HP: 200) versus guerreiro_mistico_da_agua (HP: 100)
 
-velosum versus anao
-
--> velosum (HP: 100) ataca: 
-anao perde 21 pontos de vida, restam: 79
-
--> anao (HP: 79) ataca: 
-velosum perde 44 pontos de vida, restam: 56
-
--> velosum (HP: 56) ataca: 
-anao perde 31 pontos de vida, restam: 48
-
--> anao (HP: 48) ataca: 
-O anao errou o ataque :(
-velosum perde 7 pontos de vida, restam: 49
-
--> velosum (HP: 49) ataca: 
-anao perde 33 pontos de vida, restam: 15
-
--> anao (HP: 15) ataca: 
-velosum perde 41 pontos de vida, restam: 8
-
--> velosum (HP: 8) ataca: 
-FATALITY!
-
-VENCEDOR: velosum
-
-MOTIVACAO! o Exercito do mal ganha 10% de saude e poder 
-
-ladrao versus gollum
-
--> gollum (HP: 100) ataca: 
-O ladrao desviou do golpe, ladrao perde 0 pontos de vida, restam: 100
-
--> ladrao (HP: 100) ataca: 
-Ataque duplo!
-gollum perde 18 pontos de vida, restam: 82
+-> tata (HP: 200) ataca: 
 Contra-ataque!
-ladrao perde 20 pontos de vida, restam: 80
+tata perde 50 pontos de vida, restam: 150
 
--> gollum (HP: 82) ataca: 
-ladrao perde 12 pontos de vida, restam: 68
+-> guerreiro_mistico_da_agua (HP: 100) ataca: 
+tata perde 50 pontos de vida, restam: 100
 
--> ladrao (HP: 68) ataca: 
-gollum perde 25 pontos de vida, restam: 57
-
--> gollum (HP: 57) ataca: 
-ladrao perde 11 pontos de vida, restam: 57
-
--> ladrao (HP: 57) ataca: 
+-> tata (HP: 100) ataca: 
 Contra-ataque!
-ladrao perde 20 pontos de vida, restam: 37
+tata perde 50 pontos de vida, restam: 50
 
--> gollum (HP: 57) ataca: 
-O ladrao desviou do golpe, ladrao perde 0 pontos de vida, restam: 37
+-> guerreiro_mistico_da_agua (HP: 100) ataca: 
+tata perde 49 pontos de vida, restam: 1
 
--> ladrao (HP: 37) ataca: 
-Ataque duplo!
-Contra-ataque!
-ladrao perde 20 pontos de vida, restam: 17
+-> tata (HP: 1) ataca: 
+Sauron confunde o inimigo com seu olhar tenebroso e desfere o dobro de ataque!
 Contra-ataque!
 FATALITY!
 
-VENCEDOR: gollum
+VENCEDOR: guerreiro_mistico_da_agua
 
-MOTIVACAO! o Exercito do bem ganha 10% de saude e poder 
-
-tata versus job
+MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+velosum (HP: 100) versus job (HP: 100)
 
 -> job (HP: 100) ataca: 
-tata perde 60 pontos de vida, restam: 20
+velosum perde 54 pontos de vida, restam: 46
 
--> tata (HP: 20) ataca: 
-job perde 32 pontos de vida, restam: 68
+-> velosum (HP: 46) ataca: 
+job perde 33 pontos de vida, restam: 67
 
--> job (HP: 68) ataca: 
+-> job (HP: 67) ataca: 
 FATALITY!
 
 VENCEDOR: job
 
-MOTIVACAO! o Exercito do bem ganha 10% de saude e poder 
+MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+darknight (HP: 79) versus anao (HP: 100)
 
-velosum versus gollum
+-> anao (HP: 100) ataca: 
+O cavaleiro das trevas usa o seu escudo com sabedoria e bloqueia totalmente o ataque inimigo, darknight perde 0 pontos de vida, restam: 79
 
--> gollum (HP: 57) ataca: 
+-> darknight (HP: 79) ataca: 
+anao perde 50 pontos de vida, restam: 50
+
+-> anao (HP: 50) ataca: 
+darknight perde 43 pontos de vida, restam: 36
+
+-> darknight (HP: 36) ataca: 
+anao perde 49 pontos de vida, restam: 1
+
+-> anao (HP: 1) ataca: 
+O anao errou o ataque :(
+darknight perde 7 pontos de vida, restam: 29
+
+-> darknight (HP: 29) ataca: 
 FATALITY!
 
-VENCEDOR: gollum
+VENCEDOR: darknight
 
-MOTIVACAO! o Exercito do bem ganha 10% de saude e poder 
+MOTIVACAO! o Exercito vermelho ganha 10% de saude e poder 
+■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+darknight (HP: 29) versus job (HP: 67)
+
+-> job (HP: 67) ataca: 
+FATALITY!
+
+VENCEDOR: job
+
+MOTIVACAO! o Exercito branco ganha 10% de saude e poder 
 O EXERCITO DO BEM VENCEU

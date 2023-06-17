@@ -1,4 +1,5 @@
 10
 Sauron tata 20 30 
 Orc velosum 100 30
-Ladrao ladrao 100 20
+Darknight darknight 100 50
+Arvrok arvore 100 20
